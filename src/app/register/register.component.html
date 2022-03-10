@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="register col-4"></div>
+    <div class="register col-4">
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="mb-3">
+                <h1 class="mb-5 mt-5">Sign Up</h1>
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="text" class="form-control" id="uname" aria-describedby="emailHelp" formControlName="uname" placeholder="Enter your name" required>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <!-- Invaid uname warning -->
+            <div style="color: red" *ngIf="(this.registerForm.get('uname')?.touched || this.registerForm.get('uname')?.dirty) && this.registerForm.get('uname')?.errors">
+                <h6>Invalid Username</h6>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">User ID</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="eg. 1234" formControlName="uid" required>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <!-- Invaid uid warning -->
+            <div style="color: red" *ngIf="(this.registerForm.get('uid')?.touched || this.registerForm.get('uid')?.dirty) && this.registerForm.get('uid')?.errors">
+                <h6>Invalid User ID</h6>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1"
+                    placeholder="* * * * * * * * * * * *" formControlName="pwd" required>
+            </div>
+            <!-- Invaid pwd warning -->
+            <div style="color: red" *ngIf="(this.registerForm.get('pwd')?.touched || this.registerForm.get('pwd')?.dirty) && this.registerForm.get('pwd')?.errors">
+                <h6>Invalid Password</h6>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">I accept T&C</label>
+            </div>
+            <button type="submit" class="btn btn-primary w-50">Register</button>
+        </form>
+    </div>
+    <div class="register col-4"></div>
+</div>
