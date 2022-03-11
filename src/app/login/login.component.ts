@@ -28,8 +28,22 @@ export class LoginComponent implements OnInit {
     var pwd = this.loginForm.value.pwd
 
     if (this.loginForm.valid) {
-      alert("valid form")
-      this.router.navigateByUrl("dashboard")
+      // asynchronous
+      this.ds.login(uid, pwd)
+        .subscribe((result: any) => {
+          if (result) {
+            localStorage.setItem("currentUserName", JSON.stringify(result.currentUserName))
+            localStorage.setItem("currentUserId", JSON.stringify(result.currentUserId))
+            localStorage.setItem("token", JSON.stringify(result.token))
+            alert(result.message)
+            this.router.navigateByUrl("dashboard")
+          }
+        },
+          (result) => {
+            alert(result.error.message)
+          }
+        )
+
     }
     else {
       alert("invalid form")

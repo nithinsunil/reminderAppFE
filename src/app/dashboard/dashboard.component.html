@@ -1,1 +1,46 @@
-<p>dashboard works!</p>
+<div class="mt-5">
+    <h1> Welcome {{user}}</h1>
+</div>
+<div>
+    <h4 style="margin-left: 25px;" class="mt-5 ms-5">Login Details: {{logDate |date: 'short'}}</h4>
+</div>
+
+<form (ngSubmit)="addEvent()">
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter event here">
+    <input type="date" class="form-control" id="eventDate">
+    <input type="submit" value="Add event" class="btn btn-success">
+</form>
+
+<!-- <div class="row mt-4">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Event</th>
+                    <th scope="col">Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <button type="button" class="btn btn-danger">Delete</button>
+
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="col-2"></div>
+</div> -->
+
+<i class="fa-solid fa-trash-can"></i>

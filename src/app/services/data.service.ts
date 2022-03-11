@@ -11,21 +11,33 @@ const options = {
 })
 export class DataService {
 
+  currentUserName: any
+  currentUserId: any
+
   database: any = {
-    1000: { uid: 1000, uname: "michael", pwd: "1000" },
-    1001: { uid: 1001, uname: "jim", pwd: "1001" },
-    1002: { uid: 1002, uname: "pam", pwd: "1002" },
-    1003: { uid: 1003, uname: "dwight", pwd: "1003" }
+    2000: { uid: 2000, uname: "michael", pwd: "2000" },
+    2001: { uid: 2001, uname: "jim", pwd: "2001" },
+    2002: { uid: 2002, uname: "pam", pwd: "2002" },
+    2003: { uid: 2003, uname: "dwight", pwd: "2003" }
   }
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  // register(uid: any, uname: any, pwd: any) {
-  //   const data = {
-  //     uid,
-  //     uname,
-  //     pwd
-  //   }
-  //   return true
-  // }
+  register(uid: any, uname: any, pwd: any) {
+    const data = {
+      uid,
+      uname,
+      pwd
+    }
+    return this.http.post("http://localhost:3000/register", data)
+  }
+
+  login(uid: any, pwd: any){
+    const data = {
+      uid,
+      pwd
+    }
+    // login API
+    return(this.http.post("http://localhost:3000/login", data))
+  }
 }

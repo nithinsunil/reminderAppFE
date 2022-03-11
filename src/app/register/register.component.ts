@@ -26,16 +26,18 @@ export class RegisterComponent implements OnInit {
     var uname = this.registerForm.value.uname
     var pwd = this.registerForm.value.pwd
 
-    // ==> continue from here <==
     if (this.registerForm.valid) {
-      var uid = this.registerForm.value.uid
-      var uname = this.registerForm.value.uname
-      var pwd = this.registerForm.value.pwd
-  
-      alert("valid form")
-      this.router.navigateByUrl("")
-      console.log(uid,uname,pwd);
-      
+      this.ds.register(uid, uname, pwd)
+      .subscribe((result: any)=>{
+        if(result){
+          alert(result.message)
+          this.router.navigateByUrl("")
+        }
+      },
+      (result) =>{
+        alert(result.error.message)
+      }
+      )   
       
     }
     else{
